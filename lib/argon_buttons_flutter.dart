@@ -17,26 +17,18 @@ class ArgonButton extends StatefulWidget {
   final Widget child;
   final Function(
       Function startLoading, Function stopLoading, ButtonState btnState)? onTap;
-  final Color? color;
-  final Color? focusColor;
-  final Color? hoverColor;
-  final Color? highlightColor;
-  final Color? splashColor;
-  final Brightness? colorBrightness;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
   final double? elevation;
-  final double? focusElevation;
-  final double? hoverElevation;
-  final double? highlightElevation;
   final EdgeInsetsGeometry padding;
   final Clip clipBehavior;
   final FocusNode? focusNode;
-  final MaterialTapTargetSize? materialTapTargetSize;
+  final MaterialTapTargetSize? tapTargetSize;
   final bool roundLoadingShape;
   final double borderRadius;
   final BorderSide borderSide;
-  final double? disabledElevation;
-  final Color? disabledColor;
-  final Color? disabledTextColor;
+  final Color? disabledBackgroundColor;
+  final Color? disabledForegroundColor;
 
   ArgonButton(
       {required this.height,
@@ -48,32 +40,19 @@ class ArgonButton extends StatefulWidget {
       this.reverseCurve: Curves.easeInOutCirc,
       required this.child,
       this.onTap,
-      this.color,
-      this.focusColor,
-      this.hoverColor,
-      this.highlightColor,
-      this.splashColor,
-      this.colorBrightness,
+      this.backgroundColor,
+      this.foregroundColor,
       this.elevation,
-      this.focusElevation,
-      this.hoverElevation,
-      this.highlightElevation,
       this.padding: const EdgeInsets.all(0),
       this.borderRadius: 0.0,
       this.clipBehavior: Clip.none,
       this.focusNode,
-      this.materialTapTargetSize,
+      this.tapTargetSize,
       this.roundLoadingShape: true,
       this.borderSide: const BorderSide(color: Colors.transparent, width: 0),
-      this.disabledElevation,
-      this.disabledColor,
-      this.disabledTextColor})
-      : assert(elevation == null || elevation >= 0.0),
-        assert(focusElevation == null || focusElevation >= 0.0),
-        assert(hoverElevation == null || hoverElevation >= 0.0),
-        assert(highlightElevation == null || highlightElevation >= 0.0),
-        assert(disabledElevation == null || disabledElevation >= 0.0),
-        assert(clipBehavior != null);
+      this.disabledBackgroundColor,
+      this.disabledForegroundColor})
+      : assert(elevation == null || elevation >= 0.0);
 
   @override
   _ArgonButtonState createState() => _ArgonButtonState();
@@ -171,25 +150,19 @@ class _ArgonButtonState extends State<ArgonButton>
                   widget.borderRadius, widget.height / 2, _animation.value)!
               : widget.borderRadius),
         ),
-        child: RaisedButton(
+        child: ElevatedButton(
             key: _buttonKey,
-            color: widget.color,
-            focusColor: widget.focusColor,
-            hoverColor: widget.hoverColor,
-            highlightColor: widget.highlightColor,
-            splashColor: widget.splashColor,
-            colorBrightness: widget.colorBrightness,
-            elevation: widget.elevation,
-            focusElevation: widget.focusElevation,
-            hoverElevation: widget.hoverElevation,
-            highlightElevation: widget.highlightElevation,
-            padding: widget.padding,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: widget.backgroundColor, // background
+              foregroundColor: widget.foregroundColor, // foreground
+              elevation: widget.elevation,
+              padding: widget.padding,
+              tapTargetSize: widget.tapTargetSize,
+              disabledBackgroundColor: widget.disabledBackgroundColor,
+              disabledForegroundColor: widget.disabledForegroundColor,
+            ),
             clipBehavior: widget.clipBehavior,
             focusNode: widget.focusNode,
-            materialTapTargetSize: widget.materialTapTargetSize,
-            disabledElevation: widget.disabledElevation,
-            disabledColor: widget.disabledColor,
-            disabledTextColor: widget.disabledTextColor,
             onPressed: () {
               widget.onTap!(
                   () => animateForward(), () => animateReverse(), btn);
@@ -210,27 +183,21 @@ class ArgonTimerButton extends StatefulWidget {
   final Curve curve;
   final Curve reverseCurve;
   final Widget child;
-  final Function(Function startTimer, ButtonState? btnState)? onTap;
-  final Color? color;
-  final Color? focusColor;
-  final Color? hoverColor;
-  final Color? highlightColor;
-  final Color? splashColor;
-  final Brightness? colorBrightness;
+  final Function(Function startTimers, ButtonState? btnState)? onTap;
+
+  final Color? backgroundColor;
+  final Color? foregroundColor;
   final double? elevation;
-  final double? focusElevation;
-  final double? hoverElevation;
-  final double? highlightElevation;
   final EdgeInsetsGeometry padding;
   final Clip clipBehavior;
   final FocusNode? focusNode;
-  final MaterialTapTargetSize? materialTapTargetSize;
+  final MaterialTapTargetSize? tapTargetSize;
   final bool roundLoadingShape;
   final double borderRadius;
   final BorderSide borderSide;
-  final double? disabledElevation;
-  final Color? disabledColor;
-  final Color? disabledTextColor;
+  final Color? disabledBackgroundColor;
+  final Color? disabledForegroundColor;
+
   final int initialTimer;
 
   ArgonTimerButton(
@@ -243,33 +210,19 @@ class ArgonTimerButton extends StatefulWidget {
       this.reverseCurve: Curves.easeInOutCirc,
       required this.child,
       this.onTap,
-      this.color,
-      this.focusColor,
-      this.hoverColor,
-      this.highlightColor,
-      this.splashColor,
-      this.colorBrightness,
       this.elevation,
-      this.focusElevation,
-      this.hoverElevation,
-      this.highlightElevation,
+      this.backgroundColor,
+      this.foregroundColor,
       this.padding: const EdgeInsets.all(0),
       this.borderRadius: 0.0,
       this.clipBehavior: Clip.none,
       this.focusNode,
-      this.materialTapTargetSize,
+      this.tapTargetSize,
       this.roundLoadingShape: true,
       this.borderSide: const BorderSide(color: Colors.transparent, width: 0),
-      this.disabledElevation,
-      this.disabledColor,
-      this.disabledTextColor,
-      this.initialTimer: 0})
-      : assert(elevation == null || elevation >= 0.0),
-        assert(focusElevation == null || focusElevation >= 0.0),
-        assert(hoverElevation == null || hoverElevation >= 0.0),
-        assert(highlightElevation == null || highlightElevation >= 0.0),
-        assert(disabledElevation == null || disabledElevation >= 0.0),
-        assert(clipBehavior != null);
+      this.disabledBackgroundColor,
+      this.disabledForegroundColor,
+      this.initialTimer: 0});
 
   @override
   _ArgonTimerButtonState createState() => _ArgonTimerButtonState();
@@ -406,24 +359,18 @@ class _ArgonTimerButtonState extends State<ArgonTimerButton>
                   widget.borderRadius, widget.height / 2, _animation.value)!
               : widget.borderRadius),
         ),
-        child: RaisedButton(
-            color: widget.color,
-            focusColor: widget.focusColor,
-            hoverColor: widget.hoverColor,
-            highlightColor: widget.highlightColor,
-            splashColor: widget.splashColor,
-            colorBrightness: widget.colorBrightness,
-            elevation: widget.elevation,
-            focusElevation: widget.focusElevation,
-            hoverElevation: widget.hoverElevation,
-            highlightElevation: widget.highlightElevation,
-            padding: widget.padding,
+        child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: widget.backgroundColor, // background
+              foregroundColor: widget.foregroundColor, // foreground
+              elevation: widget.elevation,
+              padding: widget.padding,
+              tapTargetSize: widget.tapTargetSize,
+              disabledBackgroundColor: widget.disabledBackgroundColor,
+              disabledForegroundColor: widget.disabledForegroundColor,
+            ),
             clipBehavior: widget.clipBehavior,
             focusNode: widget.focusNode,
-            materialTapTargetSize: widget.materialTapTargetSize,
-            disabledElevation: widget.disabledElevation,
-            disabledColor: widget.disabledColor,
-            disabledTextColor: widget.disabledTextColor,
             onPressed: () {
               widget.onTap!((newCounter) => startTimer(newCounter), btn);
             },

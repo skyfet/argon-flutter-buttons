@@ -182,7 +182,7 @@ class ArgonButtonExample extends StatelessWidget {
                 ),
               ),
               borderRadius: 5.0,
-              color: Color(0xFFfb4747),
+              backgroundColor: Color(0xFFfb4747),
             ),
             SizedBox(
               height: 50,
@@ -214,7 +214,7 @@ class ArgonButtonExample extends StatelessWidget {
                     fontWeight: FontWeight.w700),
               ),
               borderRadius: 5.0,
-              color: Color(0xFF7866FE),
+              backgroundColor: Color(0xFF7866FE),
             ),
           ],
         ),
