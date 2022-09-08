@@ -42,8 +42,7 @@ class ArgonButtonExample extends StatelessWidget {
               height: 50,
               width: MediaQuery.of(context).size.width * 0.45,
               minWidth: MediaQuery.of(context).size.width * 0.30,
-              highlightColor: Colors.transparent,
-              highlightElevation: 0,
+
               roundLoadingShape: false,
               onTap: (startTimer, btnState) {
                 if (btnState == ButtonState.Idle) {
@@ -68,7 +67,7 @@ class ArgonButtonExample extends StatelessWidget {
                 );
               },
               borderRadius: 5.0,
-              color: Colors.transparent,
+              backgroundColor: Colors.transparent,
               elevation: 0,
               borderSide: BorderSide(color: Colors.black, width: 1.5),
             ),
@@ -106,7 +105,7 @@ class ArgonButtonExample extends StatelessWidget {
                 );
               },
               borderRadius: 5.0,
-              color: Color(0xFF7866FE),
+              backgroundColor: Color(0xFF7866FE),
             ),
             SizedBox(
               height: 50,
@@ -115,10 +114,9 @@ class ArgonButtonExample extends StatelessWidget {
               height: 50,
               width: MediaQuery.of(context).size.width * 0.45,
               minWidth: MediaQuery.of(context).size.width * 0.30,
-              highlightColor: Colors.transparent,
-              highlightElevation: 0,
+
               roundLoadingShape: false,
-              splashColor: Colors.transparent,
+
               onTap: (startTimer, btnState) {
                 if (btnState == ButtonState.Idle) {
                   startTimer(5);
@@ -142,7 +140,7 @@ class ArgonButtonExample extends StatelessWidget {
                 );
               },
               borderRadius: 5.0,
-              color: Colors.transparent,
+              backgroundColor: Colors.transparent,
               elevation: 0,
             ),
             SizedBox(
